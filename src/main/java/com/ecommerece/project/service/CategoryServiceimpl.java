@@ -13,6 +13,17 @@ public class CategoryServiceimpl implements CategoryService{
 
 
     @Override
+    public String deleteCategory(Long categoryId) {
+        Category category=categories.stream()
+                .filter(c->c.getCategoryId().equals(categoryId))
+                .findFirst().orElse(null);
+        if(category==null)
+            return "category not found";
+        categories.remove(category);
+        return "category with categoryId "+categoryId+" deleted successfully!!";
+    }
+
+    @Override
     public List<Category> getAllCategory() {
         return categories;
     }
@@ -23,4 +34,5 @@ public class CategoryServiceimpl implements CategoryService{
         categories.add(category);
 
     }
+
 }

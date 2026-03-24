@@ -28,4 +28,10 @@ public class CategoryController {
         return "Category added successfully";
     }
 
+    @DeleteMapping("api/admin/categories/{categoryId}")
+    public String deleteCategory(@PathVariable Long categoryId){
+        String status=categoryService.deleteCategory(categoryId);
+        return status;
+    }
+
 }
